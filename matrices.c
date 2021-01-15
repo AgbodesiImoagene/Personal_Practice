@@ -720,15 +720,19 @@ int main(void) {
           }
           det = determinant(matrix1, n);
           adjoint(matrix2, n);
-          printf("The inverse of your matrix is: ");
-          for (i = 0; i < n; i++) {
-            printf("\n[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix2[i][j]);
+          if (det != 0) {
+            printf("The inverse of your matrix is: ");
+            for (i = 0; i < n; i++) {
+              printf("\n[ ");
+              for (j = 0; j < n; j++) {
+                printf("%lf ", matrix2[i][j]);
+              }
+              printf("] ");
             }
-            printf("] ");
+            printf("X %lf\n", (1 / det));
+          } else {
+            printf("Your matrix is not invertible. \n");
           }
-          printf("X %lf\n", (1 / det));
         }
       }
     } else if (a == 17) {
@@ -1018,7 +1022,7 @@ double determinant(double a[100][100], int n) {
     int i;
     LU_decomposition(a, n, b, c);
     for (i = 0; i < n; i++) {
-      det *= b[i][i] * c[i][i];
+      det *= c[i][i];
     }
     return det;
   }
