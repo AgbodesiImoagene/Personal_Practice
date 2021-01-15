@@ -1,4 +1,5 @@
 #include <stdio.h>
+void matrix_calculator(void);
 void double_swap(double *a, double *b);
 void row_swap(double a[100][100], int row_1, int row_2);
 void matrix_addition(double a[100][100], double b[100][100], double c[100][100], int x, int y);
@@ -18,7 +19,12 @@ double determinant(double a[100][100], int n);
 void LU_decomposition(double a[100][100], int n, double L[100][100], double U[100][100]);
 
 int main(void) {
-  int a;
+  matrix_calculator();
+  printf("Thank you for using this program. \n");
+  return 0;
+}
+void matrix_calculator(void) {
+  int a, b;
   printf("For matrix addition enter 1. \n");
   printf("For matrix subtraction enter 2. \n");
   printf("For matrix-scalar multiplication enter 3. \n");
@@ -300,489 +306,495 @@ int main(void) {
         printf("] \n");
       }
       transpose(matrix, x, y);
-        printf("Your matrix transpose is: \n");
-        for (i = 0; i < y; i++) {
-          printf("[ ");
-          for (j = 0; j < x; j++) {
-            printf("%lf ", matrix[i][j]);
-          }
-          printf("] \n");
+      printf("Your matrix transpose is: \n");
+      for (i = 0; i < y; i++) {
+        printf("[ ");
+        for (j = 0; j < x; j++) {
+          printf("%lf ", matrix[i][j]);
+        }
+        printf("] \n");
+      }
+    }
+  } else if (a == 7) {
+    double matrix[100][100];
+    int x, y, i, j;
+    printf("Enter the number of rows of the matrix: ");
+    scanf("%d", &x);
+    printf("Enter the number of columns of the matrix: ");
+    scanf("%d", &y);
+    if ((x > 100) || (y > 100)) {
+      printf("The matrix is too large. \n");
+    } else {
+      for (i = 0; i < x; i++) {
+        for (j = 0; j < y; j++) {
+          printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+          scanf("%lf", &matrix[i][j]);
         }
       }
-    } else if (a == 7) {
-      double matrix[100][100];
-      int x, y, i, j;
-      printf("Enter the number of rows of the matrix: ");
-      scanf("%d", &x);
-      printf("Enter the number of columns of the matrix: ");
-      scanf("%d", &y);
-      if ((x > 100) || (y > 100)) {
-        printf("The matrix is too large. \n");
-      } else {
-        for (i = 0; i < x; i++) {
-          for (j = 0; j < y; j++) {
-            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-            scanf("%lf", &matrix[i][j]);
-          }
+      printf("Your matrix is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix[i][j]);
         }
-        printf("Your matrix is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix[i][j]);
-          }
-          printf("] \n");
+        printf("] \n");
+      }
+      REF(matrix, x, y);
+      printf("Your matrix in REF is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix[i][j]);
         }
-        REF(matrix, x, y);
-        printf("Your matrix in REF is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix[i][j]);
-          }
-          printf("] \n");
+        printf("] \n");
+      }
+    }
+  } else if (a == 8) {
+    double matrix[100][100];
+    int x, y, i, j;
+    printf("Enter the number of rows of the matrix: ");
+    scanf("%d", &x);
+    printf("Enter the number of columns of the matrix: ");
+    scanf("%d", &y);
+    if ((x > 100) || (y > 100)) {
+      printf("The matrix is too large. \n");
+    } else {
+      for (i = 0; i < x; i++) {
+        for (j = 0; j < y; j++) {
+          printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+          scanf("%lf", &matrix[i][j]);
         }
       }
-    } else if (a == 8) {
-      double matrix[100][100];
-      int x, y, i, j;
-      printf("Enter the number of rows of the matrix: ");
-      scanf("%d", &x);
-      printf("Enter the number of columns of the matrix: ");
-      scanf("%d", &y);
-      if ((x > 100) || (y > 100)) {
-        printf("The matrix is too large. \n");
-      } else {
-        for (i = 0; i < x; i++) {
-          for (j = 0; j < y; j++) {
-            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-            scanf("%lf", &matrix[i][j]);
-          }
+      printf("Your matrix is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix[i][j]);
         }
-        printf("Your matrix is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix[i][j]);
-          }
-          printf("] \n");
+        printf("] \n");
+      }
+      RREF(matrix, x, y);
+      printf("Your matrix in RREF is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix[i][j]);
         }
-        RREF(matrix, x, y);
-        printf("Your matrix in RREF is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix[i][j]);
-          }
-          printf("] \n");
+        printf("] \n");
+      }
+    }
+  } else if (a == 9) {
+    double matrix[100][100];
+    int x, y, i, j, r;
+    printf("Enter the number of rows of the matrix: ");
+    scanf("%d", &x);
+    printf("Enter the number of columns of the matrix: ");
+    scanf("%d", &y);
+    if ((x > 100) || (y > 100)) {
+      printf("The matrix is too large. \n");
+    } else {
+      for (i = 0; i < x; i++) {
+        for (j = 0; j < y; j++) {
+          printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+          scanf("%lf", &matrix[i][j]);
         }
       }
-    } else if (a == 9) {
-      double matrix[100][100];
-      int x, y, i, j, r;
-      printf("Enter the number of rows of the matrix: ");
-      scanf("%d", &x);
-      printf("Enter the number of columns of the matrix: ");
-      scanf("%d", &y);
-      if ((x > 100) || (y > 100)) {
-        printf("The matrix is too large. \n");
-      } else {
-        for (i = 0; i < x; i++) {
-          for (j = 0; j < y; j++) {
-            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-            scanf("%lf", &matrix[i][j]);
-          }
+      printf("Your matrix is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix[i][j]);
         }
-        printf("Your matrix is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix[i][j]);
-          }
-          printf("] \n");
-        }
-        r = rank(matrix, x, y);
-        printf("The rank of your matrix is: %d. \n", r);
+        printf("] \n");
       }
-    } else if (a == 10) {
-      double matrix1[100][100], matrix2[100][100];
-      int x, y, i, j, a;
-      printf("Enter the number of rows of the two matrices: ");
-      scanf("%d", &x);
-      printf("Enter the number of columns of the two matrices: ");
-      scanf("%d", &y);
-      if ((x > 100) || (y > 100)) {
-        printf("The matrix is too large. \n");
-      } else {
-        for (i = 0; i < x; i++) {
-          for (j = 0; j < y; j++) {
-            printf("Enter the element %d, %d of the first matrix: ", i + 1, j + 1);
-            scanf("%lf", &matrix1[i][j]);
-          }
-        }
-        for (i = 0; i < x; i++) {
-          for (j = 0; j < y; j++) {
-            printf("Enter the element %d, %d of the second matrix: ", i + 1, j + 1);
-            scanf("%lf", &matrix2[i][j]);
-          }
-        }
-        printf("The first matrix is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix1[i][j]);
-          }
-          printf("] \n");
-        }
-        printf("The second matrix is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix2[i][j]);
-          }
-          printf("] \n");
-        }
-        a = row_equivalence(matrix1, matrix2, x, y);
-        if (a == 1) {
-          printf("The matrices are row-equivalent: \n");
-        } else {
-          printf("The matrices are not row-equivalent: \n");
+      r = rank(matrix, x, y);
+      printf("The rank of your matrix is: %d. \n", r);
+    }
+  } else if (a == 10) {
+    double matrix1[100][100], matrix2[100][100];
+    int x, y, i, j, a;
+    printf("Enter the number of rows of the two matrices: ");
+    scanf("%d", &x);
+    printf("Enter the number of columns of the two matrices: ");
+    scanf("%d", &y);
+    if ((x > 100) || (y > 100)) {
+      printf("The matrix is too large. \n");
+    } else {
+      for (i = 0; i < x; i++) {
+        for (j = 0; j < y; j++) {
+          printf("Enter the element %d, %d of the first matrix: ", i + 1, j + 1);
+          scanf("%lf", &matrix1[i][j]);
         }
       }
-    } else if (a == 11) {
-      double matrix[100][100], matrix2[100][100], vector[100];
-      int x, y, z, i, j, k;
-      printf("Enter the number of equations in the SLE: ");
-      scanf("%d", &x);
-      printf("Enter the number of variables in the SLE: ");
-      scanf("%d", &y);
-      if ((x > 100) || (y > 99)) {
-        printf("The SLE is too large. \n");
+      for (i = 0; i < x; i++) {
+        for (j = 0; j < y; j++) {
+          printf("Enter the element %d, %d of the second matrix: ", i + 1, j + 1);
+          scanf("%lf", &matrix2[i][j]);
+        }
+      }
+      printf("The first matrix is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix1[i][j]);
+        }
+        printf("] \n");
+      }
+      printf("The second matrix is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix2[i][j]);
+        }
+        printf("] \n");
+      }
+      a = row_equivalence(matrix1, matrix2, x, y);
+      if (a == 1) {
+        printf("The matrices are row-equivalent: \n");
       } else {
+        printf("The matrices are not row-equivalent: \n");
+      }
+    }
+  } else if (a == 11) {
+    double matrix[100][100], matrix2[100][100], vector[100];
+    int x, y, z, i, j, k;
+    printf("Enter the number of equations in the SLE: ");
+    scanf("%d", &x);
+    printf("Enter the number of variables in the SLE: ");
+    scanf("%d", &y);
+    if ((x > 100) || (y > 99)) {
+      printf("The SLE is too large. \n");
+    } else {
+      for (i = 0; i < x; i++) {
+        for (j = 0; j < y; j++) {
+          printf("Enter the element %d, %d of the matrix of coefficients(A): ", i + 1, j + 1);
+          scanf("%lf", &matrix[i][j]);
+        }
+      }
+      for (i = 0; i < x; i++) {
+        printf("Enter the element %d of the vector of constants(b): ",i + 1);
+        scanf("%lf", &vector[i]);
+      }
+      printf("The matrix of coefficients is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y; j++) {
+          printf("%lf ", matrix[i][j]);
+        }
+        printf("] \n");
+      }
+      printf("The vector of constants is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ %lf ] \n", vector[i]);
+      }
+      for (i = 0; i < x; i++) {
+        for (j = 0; j < y; j++) {
+          matrix2[i][j] = matrix[i][j];
+        }
+      }
+      for (i = 0; i < x; i++) {
+        matrix2[i][y] = vector[i];
+      }
+      printf("The augmented matrix of the SLE is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y + 1; j++) {
+          printf("%lf ", matrix2[i][j]);
+        }
+        printf("] \n");
+      }
+      z = SLE(matrix2, x, y + 1);
+      printf("The augmented matrix of the SLE in RREF is: \n");
+      for (i = 0; i < x; i++) {
+        printf("[ ");
+        for (j = 0; j < y + 1; j++) {
+          printf("%lf ", matrix2[i][j]);
+        }
+        printf("] \n");
+      }
+      if (z == 0) {
+        printf("The SLE is inconsistent. \n");
+      } else {
+        printf("The SLE is consistent. \n");
+        printf("The solution is(x): \n");
         for (i = 0; i < x; i++) {
           for (j = 0; j < y; j++) {
-            printf("Enter the element %d, %d of the matrix of coefficients(A): ", i + 1, j + 1);
-            scanf("%lf", &matrix[i][j]);
+            if (matrix2[i][j] == 1) {
+              printf("X%d = %lf", j + 1, matrix2[i][y]);
+              for (k = j + 1; k < y; k++) {
+                if (matrix2[i][k] > 0) {
+                  printf(" - (%lf x X%d)", matrix2[i][k], k + 1);
+                } else if (matrix2[i][k] < 0) {
+                  printf(" + (%lf x X%d)", -matrix2[i][k], k + 1);
+                }
+              }
+              break;
+            }
           }
+          printf(".\n");
         }
         for (i = 0; i < x; i++) {
-          printf("Enter the element %d of the vector of constants(b): ",i + 1);
-          scanf("%lf", &vector[i]);
-        }
-        printf("The matrix of coefficients is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y; j++) {
-            printf("%lf ", matrix[i][j]);
-          }
-          printf("] \n");
-        }
-        printf("The vector of constants is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ %lf ] \n", vector[i]);
-        }
-        for (i = 0; i < x; i++) {
-          for (j = 0; j < y; j++) {
-            matrix2[i][j] = matrix[i][j];
-          }
-        }
-        for (i = 0; i < x; i++) {
-          matrix2[i][y] = vector[i];
-        }
-        printf("The augmented matrix of the SLE is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y + 1; j++) {
-            printf("%lf ", matrix2[i][j]);
-          }
-          printf("] \n");
-        }
-        z = SLE(matrix2, x, y + 1);
-        printf("The augmented matrix of the SLE in RREF is: \n");
-        for (i = 0; i < x; i++) {
-          printf("[ ");
-          for (j = 0; j < y + 1; j++) {
-            printf("%lf ", matrix2[i][j]);
-          }
-          printf("] \n");
-        }
-        if (z == 0) {
-          printf("The SLE is inconsistent. \n");
-        } else {
-          printf("The SLE is consistent. \n");
-          printf("The solution is(x): \n");
-          for (i = 0; i < x; i++) {
+          if (z == 1) {
             for (j = 0; j < y; j++) {
               if (matrix2[i][j] == 1) {
-                printf("X%d = %lf", j + 1, matrix2[i][y]);
                 for (k = j + 1; k < y; k++) {
-                  if (matrix2[i][k] > 0) {
-                    printf(" - (%lf x X%d)", matrix2[i][k], k + 1);
-                  } else if (matrix2[i][k] < 0) {
-                    printf(" + (%lf x X%d)", -matrix2[i][k], k + 1);
+                  if (matrix2[i][k] != 0) {
+                    z = 0;
+                    break;
                   }
                 }
                 break;
               }
             }
-            printf(".\n");
-          }
-          for (i = 0; i < x; i++) {
-            if (z == 1) {
-              for (j = 0; j < y; j++) {
-                if (matrix2[i][j] == 1) {
-                  for (k = j + 1; k < y; k++) {
-                    if (matrix2[i][k] != 0) {
-                      z = 0;
-                      break;
-                    }
-                  }
-                  break;
-                }
-              }
-            } else {
-              break;
-            }
-          }
-          if (z == 1) {
-            printf("The SLE has a unique solution. \n");
           } else {
-            printf("The SLE has an infinite solution set. \n");
+            break;
           }
         }
-      }
-    } else if (a == 12) {
-      double matrix[100][100];
-      int n, i, j;
-      printf("Enter the number of rows and columns of the matrix: ");
-      scanf("%d", &n);
-      if (n > 100) {
-        printf("The matrix is too large. \n");
-      } else {
-        if (n < 2) {
-          printf("The number of rows and columns must be greater than or equal to 2. \n");
+        if (z == 1) {
+          printf("The SLE has a unique solution. \n");
         } else {
-          for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-              printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-              scanf("%lf", &matrix[i][j]);
-            }
-          }
-          printf("Your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-          minors(matrix, n);
-          printf("The matrix of minors of your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-        }
-      }
-    } else if (a == 13) {
-      double matrix[100][100];
-      int n, i, j;
-      printf("Enter the number of rows and columns of the matrix: ");
-      scanf("%d", &n);
-      if (n > 100) {
-        printf("The matrix is too large. \n");
-      } else {
-        if (n < 2) {
-          printf("The number of rows and columns must be greater than or equal to 2. \n");
-        } else {
-          for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-              printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-              scanf("%lf", &matrix[i][j]);
-            }
-          }
-          printf("Your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-          cofactors(matrix, n);
-          printf("The matrix of cofactors of your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-        }
-      }
-    } else if (a == 14) {
-      double matrix[100][100];
-      int n, i, j;
-      printf("Enter the number of rows and columns of the matrix: ");
-      scanf("%d", &n);
-      if (n > 100) {
-        printf("The matrix is too large. \n");
-      } else {
-        if (n < 2) {
-          printf("The number of rows and columns must be greater than or equal to 2. \n");
-        } else {
-          for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-              printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-              scanf("%lf", &matrix[i][j]);
-            }
-          }
-          printf("Your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-          adjoint(matrix, n);
-          printf("The adjoint of your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-        }
-      }
-    } else if (a == 15) {
-      double matrix[100][100], det;
-      int n, i, j;
-      printf("Enter the number of rows and columns of the matrix: ");
-      scanf("%d", &n);
-      if (n > 100) {
-        printf("The matrix is too large. \n");
-      } else {
-        if (n < 2) {
-          printf("The number of rows and columns must be greater than or equal to 2. \n");
-        } else {
-          for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-              printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-              scanf("%lf", &matrix[i][j]);
-            }
-          }
-          printf("Your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-          det = determinant(matrix, n);
-          printf("The determinant of your matrix is: %lf. \n", det);
-        }
-      }
-    } else if (a == 16) {
-      double matrix1[100][100], matrix2[100][100], det;
-      int n, i, j;
-      printf("Enter the number of rows and columns of the matrix: ");
-      scanf("%d", &n);
-      if (n > 100) {
-        printf("The matrix is too large. \n");
-      } else {
-        if (n < 2) {
-          printf("The number of rows and columns must be greater than or equal to 2. \n");
-        } else {
-          for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-              printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-              scanf("%lf", &matrix1[i][j]);
-            }
-          }
-          printf("Your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix1[i][j]);
-            }
-            printf("] \n");
-          }
-          for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-              matrix2[i][j] = matrix1[i][j];
-            }
-          }
-          det = determinant(matrix1, n);
-          adjoint(matrix2, n);
-          if (det != 0) {
-            printf("The inverse of your matrix is: ");
-            for (i = 0; i < n; i++) {
-              printf("\n[ ");
-              for (j = 0; j < n; j++) {
-                printf("%lf ", matrix2[i][j]);
-              }
-              printf("] ");
-            }
-            printf("X %lf\n", (1 / det));
-          } else {
-            printf("Your matrix is not invertible. \n");
-          }
-        }
-      }
-    } else if (a == 17) {
-      double matrix[100][100], lower[100][100], upper[100][100];
-      int n, i, j;
-      printf("Enter the number of rows and columns of the matrix: ");
-      scanf("%d", &n);
-      if (n > 100) {
-        printf("The matrix is too large. \n");
-      } else {
-        if (n < 2) {
-          printf("The number of rows and columns must be greater than or equal to 2. \n");
-        } else {
-          for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-              printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
-              scanf("%lf", &matrix[i][j]);
-            }
-          }
-          printf("Your matrix is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", matrix[i][j]);
-            }
-            printf("] \n");
-          }
-          LU_decomposition(matrix, n, lower, upper);
-          printf("The lower triangular matrix of the decomposition is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", lower[i][j]);
-            }
-            printf("] \n");
-          }
-          printf("The upper triangular matrix of the decomposition is: \n");
-          for (i = 0; i < n; i++) {
-            printf("[ ");
-            for (j = 0; j < n; j++) {
-              printf("%lf ", upper[i][j]);
-            }
-            printf("] \n");
-          }
+          printf("The SLE has an infinite solution set. \n");
         }
       }
     }
-
-  printf("Thank you for using this program. \n");
-  return 0;
+  } else if (a == 12) {
+    double matrix[100][100];
+    int n, i, j;
+    printf("Enter the number of rows and columns of the matrix: ");
+    scanf("%d", &n);
+    if (n > 100) {
+      printf("The matrix is too large. \n");
+    } else {
+      if (n < 2) {
+        printf("The number of rows and columns must be greater than or equal to 2. \n");
+      } else {
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+            scanf("%lf", &matrix[i][j]);
+          }
+        }
+        printf("Your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+        minors(matrix, n);
+        printf("The matrix of minors of your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+      }
+    }
+  } else if (a == 13) {
+    double matrix[100][100];
+    int n, i, j;
+    printf("Enter the number of rows and columns of the matrix: ");
+    scanf("%d", &n);
+    if (n > 100) {
+      printf("The matrix is too large. \n");
+    } else {
+      if (n < 2) {
+        printf("The number of rows and columns must be greater than or equal to 2. \n");
+      } else {
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+            scanf("%lf", &matrix[i][j]);
+          }
+        }
+        printf("Your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+        cofactors(matrix, n);
+        printf("The matrix of cofactors of your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+      }
+    }
+  } else if (a == 14) {
+    double matrix[100][100];
+    int n, i, j;
+    printf("Enter the number of rows and columns of the matrix: ");
+    scanf("%d", &n);
+    if (n > 100) {
+      printf("The matrix is too large. \n");
+    } else {
+      if (n < 2) {
+        printf("The number of rows and columns must be greater than or equal to 2. \n");
+      } else {
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+            scanf("%lf", &matrix[i][j]);
+          }
+        }
+        printf("Your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+        adjoint(matrix, n);
+        printf("The adjoint of your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+      }
+    }
+  } else if (a == 15) {
+    double matrix[100][100], det;
+    int n, i, j;
+    printf("Enter the number of rows and columns of the matrix: ");
+    scanf("%d", &n);
+    if (n > 100) {
+      printf("The matrix is too large. \n");
+    } else {
+      if (n < 2) {
+        printf("The number of rows and columns must be greater than or equal to 2. \n");
+      } else {
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+            scanf("%lf", &matrix[i][j]);
+          }
+        }
+        printf("Your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+        det = determinant(matrix, n);
+        printf("The determinant of your matrix is: %lf. \n", det);
+      }
+    }
+  } else if (a == 16) {
+    double matrix1[100][100], matrix2[100][100], det;
+    int n, i, j;
+    printf("Enter the number of rows and columns of the matrix: ");
+    scanf("%d", &n);
+    if (n > 100) {
+      printf("The matrix is too large. \n");
+    } else {
+      if (n < 2) {
+        printf("The number of rows and columns must be greater than or equal to 2. \n");
+      } else {
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+            scanf("%lf", &matrix1[i][j]);
+          }
+        }
+        printf("Your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix1[i][j]);
+          }
+          printf("] \n");
+        }
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            matrix2[i][j] = matrix1[i][j];
+          }
+        }
+        det = determinant(matrix1, n);
+        adjoint(matrix2, n);
+        if (det != 0) {
+          printf("The inverse of your matrix is: ");
+          for (i = 0; i < n; i++) {
+            printf("\n[ ");
+            for (j = 0; j < n; j++) {
+              printf("%lf ", matrix2[i][j]);
+            }
+            printf("] ");
+          }
+          printf("X %lf\n", (1 / det));
+        } else {
+          printf("Your matrix is not invertible. \n");
+        }
+      }
+    }
+  } else if (a == 17) {
+    double matrix[100][100], lower[100][100], upper[100][100];
+    int n, i, j;
+    printf("Enter the number of rows and columns of the matrix: ");
+    scanf("%d", &n);
+    if (n > 100) {
+      printf("The matrix is too large. \n");
+    } else {
+      if (n < 2) {
+        printf("The number of rows and columns must be greater than or equal to 2. \n");
+      } else {
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            printf("Enter the element %d, %d of the matrix: ", i + 1, j + 1);
+            scanf("%lf", &matrix[i][j]);
+          }
+        }
+        printf("Your matrix is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", matrix[i][j]);
+          }
+          printf("] \n");
+        }
+        LU_decomposition(matrix, n, lower, upper);
+        printf("The lower triangular matrix of the decomposition is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", lower[i][j]);
+          }
+          printf("] \n");
+        }
+        printf("The upper triangular matrix of the decomposition is: \n");
+        for (i = 0; i < n; i++) {
+          printf("[ ");
+          for (j = 0; j < n; j++) {
+            printf("%lf ", upper[i][j]);
+          }
+          printf("] \n");
+        }
+      }
+    }
+  }
+  printf("\nIf you want to use this program again enter 1, else enter any other number: ");
+  scanf("%d", &b);
+  printf("\n");
+  if (b == 1) {
+    matrix_calculator();
+  } else {
+    return;
+  }
+  return;
 }
 void double_swap(double *a, double *b) {
   *a += *b;
