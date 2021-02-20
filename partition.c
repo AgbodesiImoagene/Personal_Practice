@@ -9,9 +9,15 @@ int main() {
   scanf("%d", &n);
   printf("Enter the size of the partition m: ");
   scanf("%d", &m);
-  x = printPartition(n, m);
-  printf("There %d are ways n can be partitioned using parts up to m. \n", x);
-  return 0;
+  if (m > n) {
+    printf("The size of the partition cannot be greater than the number of objects. \n");
+  } else if ((n <= 0) || (m <= 0)) {
+    printf("The size of the partition and the number of objects cannot be 0 or negative. \n");
+  } else {
+    x = printPartition(n, m);
+    printf("There %d are ways n can be partitioned using parts up to m. \n", x);
+    return 0;
+  }
 }
 int printPartition(int n, int m) {
   int a[n], i;
